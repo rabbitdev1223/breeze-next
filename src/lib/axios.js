@@ -15,13 +15,13 @@ function getCookie(name) {
     return decodeURIComponent(xsrfCookies[0].split('=')[1]);
 }
 
-const csrfToken = getCookie('CSRF-TOKEN');
+const csrfToken = getCookie('XSRF-TOKEN');
  
 const axios = Axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-TOKEN': csrfToken
+        'X-XSRF-TOKEN': csrfToken
     },
     withCredentials: true,
 })
